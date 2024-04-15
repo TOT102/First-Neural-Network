@@ -45,6 +45,20 @@ def plot_predictions(train_data=X_train,
     plt.scatter(test_data, predictions, c="r", s=4, label="Predictions")
 
   # Show the legend
-  plt.legend(prop={"size": 14});
+  #plt.legend(prop={"size": 14});
 
-plot_predictions();
+#plot_predictions();
+# Set manual seed since nn.Parameter are randomly initialzied
+torch.manual_seed(42)
+
+# Create an instance of the model (this is a subclass of nn.Module that contains nn.Parameter(s))
+model_0 = LinearRegressionModel()
+
+# Check the nn.Parameter(s) within the nn.Module subclass we created
+#list(model_0.parameters())
+
+# научкване на отговора с torch.inference_mode()
+with torch.inference_mode():
+  y_predictions = model_0(X_test)
+
+plot_predictions(predictions=y_predictions)
