@@ -61,4 +61,14 @@ model_0 = LinearRegressionModel()
 with torch.inference_mode():
   y_predictions = model_0(X_test)
 
-plot_predictions(predictions=y_predictions)
+#plot_predictions(predictions=y_predictions)
+
+# loss function
+loss_fn = nn.L1Loss()
+
+# optimizer - https://pytorch.org/docs/stable/optim.html SGD(sochastic gradiend decend) е най-добрият, заради широка гама от приложения
+optomizer = nn.optim.SGD(model_0.parameters(),
+                         lr = 0.01 # learning rate
+                         momentum=0.9)
+
+ 
