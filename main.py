@@ -67,7 +67,7 @@ with torch.inference_mode():
 loss_fn = nn.L1Loss()
 
 # optimizer - https://pytorch.org/docs/stable/optim.html SGD(sochastic gradiend decend) е най-добрият, заради широка гама от приложения
-optomizer = torch.optim.SGD(model_0.parameters(),
+optimizer = torch.optim.SGD(model_0.parameters(),
                          lr = 0.01 # learning rate
                          momentum=0.9)
 
