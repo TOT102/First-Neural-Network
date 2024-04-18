@@ -71,4 +71,24 @@ optomizer = nn.optim.SGD(model_0.parameters(),
                          lr = 0.01 # learning rate
                          momentum=0.9)
 
+# epoch -> едно завъртане през мрежата
+epochs = 1 # колко пъти да се завърти през мрежата
+
+for epoch in epochs:
+  model_0.train() # sets params to require gradiend decent
+
+  # Forward pass
+  y_pred = model_0(X_train)
+
+  loss = loss_fn(y_train, y_pred)
+  optimizer.zero_grad()
+
+  # Backpropagation
+  loss.backward()
+  # Grad. decent
+  optimizer.step()
+
+  model_0.eval() # turns off grad decent
+
+
  
