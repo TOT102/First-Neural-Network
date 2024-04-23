@@ -74,6 +74,11 @@ optimizer = torch.optim.SGD(model_0.parameters(),
 # epoch -> едно завъртане през мрежата
 epochs = 1 # колко пъти да се завърти през мрежата
 
+# Create empty loss lists to track values
+train_loss_values = []
+test_loss_values = []
+epoch_count = []
+
 for epoch in epochs:
   model_0.train() # sets params to require gradiend decent
 
@@ -89,6 +94,13 @@ for epoch in epochs:
   optimizer.step()
 
   model_0.eval() # turns off grad decent
+
+  # Print out what's happening
+  if epoch % 10 == 0:
+    epoch_count.append(epoch)
+    train_loss_values.append(loss.detach().numpy())
+    test_loss_values.append(test_loss.detach().numpy())
+    print(f"Epoch: {epoch} | MAE Train Loss: {loss} | MAE Test Loss: {test_loss} ")
 
 
  
