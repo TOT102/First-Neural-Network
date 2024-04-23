@@ -103,4 +103,9 @@ for epoch in epochs:
     print(f"Epoch: {epoch} | MAE Train Loss: {loss} | MAE Test Loss: {test_loss} ")
 
 
+with torch.inference_mode():
+    y_preds_new = model_0(X_test)
+plot_predictions(predictions=y_preds_new)
+
+
  
