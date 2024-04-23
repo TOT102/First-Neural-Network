@@ -92,7 +92,7 @@ for epoch in epochs:
   loss.backward()
   # Grad. decent
   optimizer.step()
-
+  ## TRAINING HERE
   model_0.eval() # turns off grad decent
 
   # Print out what's happening
