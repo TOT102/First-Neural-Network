@@ -1,6 +1,7 @@
 import torch
 from torch import nn # nn -> neural network
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 #get pytorch version
 torch.__version__
@@ -107,5 +108,17 @@ with torch.inference_mode():
     y_preds_new = model_0(X_test)
 plot_predictions(predictions=y_preds_new)
 
+# Model directory
 
+MODEL_PATH = Path("models")
+MODEL_PATH.mkdir(parents=True, exist_ok=True)
+
+# Model save path
+
+MODEL_NAME = "01_first_model_basic_workflow.pth"
+MODEL_SAVE_PATH = MODEL_PATH / MODEL_NAME
+
+# Save the model state dict
+
+torch.save(obj=model_0.state_dict(), f=MODEL_SAVE_PATH)
  
